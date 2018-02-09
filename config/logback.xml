@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are by default assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="CROSSCOM" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/crosscom.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/crosscom.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="CSSPORTSTHREAD" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/cssportsthread.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/cssportsthread.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STATS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/stats.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/stats.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CSSportsService" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/cssportsservice.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/cssports.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="S2S" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/s2s.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/s2s.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>4</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+    </appender>
+    <appender name="DATA" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- <file>${log.home}/data.log</file> -->
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/data.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+            <maxHistory>72</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+   <appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- <file>${log.home}/warn.log</file> -->
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/warn.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %replace(%msg){'10(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){3}','(mask-ip)'}%n</pattern>
+        </encoder>
+    </appender> 
+
+	<appender name="TlogReason" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/tlogReason.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/TlogReason.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="ClearPlayerMail" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/clearPlayerMail.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/ClearPlayerMail.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FATALLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/fatal.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/fatal.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SYSTEM" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/system.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/system.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="BATTLE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/battle.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/battle.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="PVEBATTLE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/pvebattle.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/battle.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="TIMEEVENT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/timeevent.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/timeevent.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DIAMOND" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/diamonds.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/diamonds.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DIAMONDERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/diamondserror.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/diamondserror.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DB" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/db.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/db.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="LEADERBOARD" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/leaderboard.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/leaderboard.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ACTIVITY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/activity.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/activity.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SECURITY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/security.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/security.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DATACONFIG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/dataconfig.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/dataconfig.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="PAY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/pay.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/pay.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <appender name="COMPETITION" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/competition.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/competition.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="TESTLOGGER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/testunit.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/testunit.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="UNIONFIGHT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/unionfight.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/unionfight.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CROSSWAR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/crosswar.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/crosswar.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="EXPUSH" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/expush.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/expush.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ERRORMONITOR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/errormonitor.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/errormonitor.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="UNIONINSTANCE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/unioninstance.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/unioninstance.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<!--         <file>${log.home}/error.log</file> -->
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %replace(%msg){'10(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){3}','(mask-ip)'}%n</pattern>
+        </encoder>
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <appender name="JNET" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/jnet.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/jnet.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>2</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="REDIS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/redis.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/redis.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>2</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="REWARD" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/reward.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/reward.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>2</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="MAIL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/mail.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/mail.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="REALTIME" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/realtime.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/realtime.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>2</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ROLLBACK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/rollback.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/rollback.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CHAT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/chat.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/chat.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="REALCOM" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/realcom.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/realcom.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ZODIAC" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/zodiac.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/zodiac.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CSCLUB" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/crossclub.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/crossclub.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="CSMINING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/crossmining.log</file>
+        
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/crossmining.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="BOSSTHREAD" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <file>${log.home}/bossthread.log</file>
+
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <!-- daily rollover -->
+                    <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/bossthread.%d{yyyy-MM-dd}.log</fileNamePattern>
+                    <maxHistory>7</maxHistory>
+                 </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+	<appender name="FINALWAR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/finalwar.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.home}/%d{yyyy-MM-dd}/finalwar.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread][%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.DataLogger" level="DEBUG">
+        <appender-ref ref="DATA" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.WarnLogger" level="DEBUG">
+        <appender-ref ref="WARN" />
+    </logger>
+    <logger name="com.playcrab.kof.gs.framework2.logger.TlogReasonLogger" level="DEBUG">
+        <appender-ref ref="TlogReason" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.ClearPlayerMailLogger" level="DEBUG">
+        <appender-ref ref="ClearPlayerMail" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.FatalLogger" level="DEBUG">
+        <appender-ref ref="FATALLOG" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.SystemLogger" level="DEBUG">
+        <appender-ref ref="SYSTEM" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.StatsLogger" level="DEBUG" additivity="false">
+        <appender-ref ref="STATS" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.BattleLogger" level="DEBUG">
+        <appender-ref ref="BATTLE" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.PVEBattleLogger" level="DEBUG">
+        <appender-ref ref="PVEBATTLE" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.TimeEventLogger" level="DEBUG">
+        <appender-ref ref="TIMEEVENT" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.DiamondLogger" level="DEBUG">
+        <appender-ref ref="DIAMOND" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.DiamondErrorLogger" level="DEBUG">
+        <appender-ref ref="DIAMONDERROR" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.DbLogger" level="DEBUG">
+        <appender-ref ref="DB" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.LeaderboardLogger" level="DEBUG">
+        <appender-ref ref="LEADERBOARD" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.ActivityLogger" level="DEBUG">
+        <appender-ref ref="ACTIVITY" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.SecurityLogger" level="DEBUG">
+        <appender-ref ref="SECURITY" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.DataConfigLogger" level="DEBUG">
+        <appender-ref ref="DATACONFIG" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.CompetitionLogger" level="DEBUG">
+        <appender-ref ref="COMPETITION" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.RewardLogger" level="DEBUG">
+        <appender-ref ref="REWARD" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.TestLogger" level="OFF">
+        <appender-ref ref="TESTLOGGER" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.service.UnionFightService" level="DEBUG">
+        <appender-ref ref="UNIONFIGHT" />
+    </logger>
+    <logger name="com.playcrab.kof.gs.framework2.logger.CrossWarLogger" level="DEBUG">
+        <appender-ref ref="CROSSWAR" />
+    </logger>
+    <logger name="com.playcrab.kof.gs.framework2.ExternalPushThread" level="DEBUG">
+        <appender-ref ref="EXPUSH" />
+    </logger>
+    <logger name="com.playcrab.kof.gs.framework2.UnionInstanceThread" level="DEBUG">
+        <appender-ref ref="UNIONINSTANCE" />
+    </logger>
+    <logger name="com.playcrab.kof.gs.framework2.logger.ErrorMonitorLogger" level="DEBUG">
+        <appender-ref ref="ERRORMONITOR" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.RewardLogger" level="DEBUG">
+        <appender-ref ref="REWARD" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.MailLogger" level="DEBUG">
+        <appender-ref ref="MAIL" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.ChatLogger" level="INFO" additivity="false">
+        <appender-ref ref="CHAT" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.RealTimeLogger" level="DEBUG">
+        <appender-ref ref="REALTIME" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.RollBackLogger" level="DEBUG">
+        <appender-ref ref="ROLLBACK" />
+    </logger>
+    <logger name="com.playcrab.kof.gs.framework2.CSComThread" level="DEBUG">
+        <appender-ref ref="CROSSCOM" />
+    </logger>
+    <logger name="com.playcrab.kof.gs.service.CSSportsService" level="DEBUG">
+        <appender-ref ref="CSSportsService" />
+    </logger>
+    <logger name="com.playcrab.kof.gs.framework2.CSSportsThread" level="DEBUG">
+        <appender-ref ref="CSSPORTSTHREAD" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.service.PayService" level="DEBUG">
+        <appender-ref ref="PAY" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.ZodiacLogger" level="DEBUG">
+        <appender-ref ref="ZODIAC" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs.framework2.logger.RealComLogger" level="DEBUG" additivity="false">
+        <appender-ref ref="REALCOM" />
+    </logger>
+
+    <logger name="com.playcrab.kof.gs" level="ERROR">
+        <appender-ref ref="ERROR" />
+    </logger>
+
+    <logger name="com.playcrab.s2s" level="DEBUG" additivity="false">
+        <appender-ref ref="S2S" />
+    </logger>
+
+    <logger name="util.RedisUtil" level="DEBUG">
+        <appender-ref ref="REDIS" />
+    </logger>
+    <logger name="jnet" level="DEBUG">
+        <appender-ref ref="JNET" />
+    </logger>
+    <logger name="com.playcrab.kof.gs.framework2.CSClubThread" level="DEBUG">
+        <appender-ref ref="CSCLUB" />
+    </logger>
+    <logger name="com.playcrab.kof.gs.framework2.CSMiningThread" level="DEBUG">
+        <appender-ref ref="CSMINING" />
+    </logger>
+    <logger name="com.playcrab.kof.gs.framework2.BossThread" level="DEBUG">
+                <appender-ref ref="BOSSTHREAD" />
+    </logger>
+    <logger name="com.playcrab.kof.gs.framework2.logger.FinalWarDataLogger" level="DEBUG">
+   				 <appender-ref ref="FINALWAR" />
+  	</logger>
+    <root name="com.playcrab.kof.gs" level="DEBUG">
+        <!-- <appender-ref ref="STDOUT" /> -->
+    </root>
+</configuration>
+
